@@ -15,30 +15,24 @@ class OrderController
      */
     public function index(OrderCalculator $service)
     {
-        $orders = Order::select(['id','name', 'quantity', 'price', 'total'])->get();
+        $orders = Order::select(['id', 'name', 'quantity', 'price', 'total'])->get();
         $grand_total = $service->getGrandTotal($orders);
 
 
         return inertia('Orders/Home', [
             'orders' => OrderResource::collection($orders),
-            'grand_total'=>$grand_total,
+            'grand_total' => $grand_total,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        Order::create($request->validated());
+        return redirect()->back();
     }
 
     /**
@@ -74,7 +68,8 @@ class OrderController
         return redirect()->back();
     }
 
-    public function truncate(){
+    public function truncate()
+    {
         Order::truncate();
 
         return redirect()->back();

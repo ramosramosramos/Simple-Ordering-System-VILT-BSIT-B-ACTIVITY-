@@ -15,7 +15,7 @@ class OrderController
      */
     public function index(OrderCalculator $service)
     {
-        $orders = Order::select(['name', 'quantity', 'price', 'total'])->get();
+        $orders = Order::select(['id','name', 'quantity', 'price', 'total'])->get();
         $grand_total = $service->getGrandTotal($orders);
 
 

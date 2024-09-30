@@ -10,7 +10,7 @@
         </thead>
         <tbody>
 
-            <tr class="bg-white border-b">
+            <tr  v-for="order in orders " :key="order.id" class="bg-white border-b">
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Jacob</td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Thornton</td>
@@ -21,3 +21,9 @@
     </table>
 
 </template>
+<script setup>
+
+defineProps({
+    orders:Object,
+})
+</script>

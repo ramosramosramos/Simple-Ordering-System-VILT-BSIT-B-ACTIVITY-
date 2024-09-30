@@ -13,7 +13,7 @@
                   ease-out">Add orders</button>
             </form>
             <div class="w-[100%] ">
-                <OrderResult />
+                <OrderResult :grand_total="grand_total" />
             </div>
         </div>
 
@@ -32,6 +32,7 @@ import { useForm } from '@inertiajs/vue3';
 defineProps({
     errors: Object,
     orders:Object,
+    grand_total:Number,
 })
 const form = useForm({
     name: "",

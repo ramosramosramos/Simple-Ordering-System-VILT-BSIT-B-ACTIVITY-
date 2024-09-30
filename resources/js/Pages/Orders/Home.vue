@@ -5,9 +5,9 @@
             <form @submit.prevent="handleOrders" class="w-[100%] flex flex-col justify-center items-center">
                 <InputField v-model="form.name" label="Product name" placeholder="Example name. .."
                     :error="errors.name" />
-                <InputField v-model="form.quantity" label="Quantity" placeholder="Number of items"
+                <InputField v-model="form.quantity" type="number" label="Quantity" placeholder="Number of items"
                     :error="errors.quantity" />
-                <InputField v-model="form.price" label="Price" placeholder="Amount of product" :error="errors.name" />
+                <InputField v-model="form.price" type="number" label="Price" placeholder="Amount of product" :error="errors.name" />
                 <button type="submit" class="bg-gray-800 text-gray-300  w-[90%]
                  m-auto h-[40px] rounded-sm hover:bg-gray-700 transition-all
                   ease-out">Add orders</button>
@@ -31,6 +31,7 @@ import { useForm } from '@inertiajs/vue3';
 
 defineProps({
     errors: Object,
+    orders:Object,
 })
 const form = useForm({
     name: "",

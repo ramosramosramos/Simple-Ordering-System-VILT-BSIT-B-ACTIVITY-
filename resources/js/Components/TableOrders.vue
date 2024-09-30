@@ -19,6 +19,7 @@
                 <td class="text-sm text-gray-900 font-light px-6 py-4"><Link
                     :href="route('orders.destroy',order.id)" method="delete" as="button" preserve-scroll class="text-red-600" >Remove</Link></td>
             </tr>
+            
 
         </tbody>
     </table>

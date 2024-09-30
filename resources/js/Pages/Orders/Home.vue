@@ -12,6 +12,7 @@
                  m-auto h-[40px] rounded-sm hover:bg-gray-700 transition-all
                   ease-out">Add orders</button>
             </form>
+
             <div class="w-[100%] ">
                 <OrderResult :grand_total="grand_total" />
             </div>

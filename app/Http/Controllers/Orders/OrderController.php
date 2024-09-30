@@ -73,4 +73,11 @@ class OrderController
         $order->delete();
         return redirect()->back();
     }
+
+    public function truncate(){
+        Order::truncate();
+
+        return redirect()->back();
+
+    }
 }

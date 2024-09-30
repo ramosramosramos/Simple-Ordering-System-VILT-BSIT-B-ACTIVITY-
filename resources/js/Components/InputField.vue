@@ -8,6 +8,11 @@
 <script setup>
 
 defineProps({
+    type: {
+        type: String,
+        default: "text",
+
+    },
     label: {
         type: String,
         default: "label",

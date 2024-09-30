@@ -1,29 +1,24 @@
 <template>
     <nav class="h-[50px] bg-gray-900"></nav>
-    <section class="min-h-[100dvh] bg-gray-900">
-        <div class=" flex gap-6  h-[350px] w-[90%]m-auto">
+    <section class="min-h-[100dvh] bg-gray-900 flex flex-col overflow-y-auto">
+        <div class=" flex gap-6  h-[350px] w-[90%] m-auto">
             <form @submit.prevent="handleOrders" class="w-[100%] flex flex-col justify-center items-center">
-                <InputField v-model="form.name"
-                label="Product name" placeholder="Example name. .."
-                :error="errors.name"/>
-                <InputField v-model="form.quantity"
-                label="Quantity" placeholder="Number of items"
-                :error="errors.quantity"/>
-                <InputField v-model="form.price"
-                label="Price" placeholder="Amount of product"
-                :error="errors.name"/>
-                <button type="submit"
-                class="bg-gray-800 text-gray-300  w-[90%]
+                <InputField v-model="form.name" label="Product name" placeholder="Example name. .."
+                    :error="errors.name" />
+                <InputField v-model="form.quantity" label="Quantity" placeholder="Number of items"
+                    :error="errors.quantity" />
+                <InputField v-model="form.price" label="Price" placeholder="Amount of product" :error="errors.name" />
+                <button type="submit" class="bg-gray-800 text-gray-300  w-[90%]
                  m-auto h-[40px] rounded-sm hover:bg-gray-700 transition-all
                   ease-out">Add orders</button>
             </form>
             <div class="w-[100%] ">
-                <OrderResult/>
+                <OrderResult />
             </div>
         </div>
 
-        <div class="">
-
+        <div class=" flex justify-center items-center w-[90%] m-auto">
+            <TableOrders />
         </div>
 
     </section>
@@ -31,10 +26,11 @@
 <script setup>
 import InputField from '@/Components/InputField.vue';
 import OrderResult from '@/Components/OrderResult.vue';
+import TableOrders from '@/Components/TableOrders.vue';
 import { useForm } from '@inertiajs/vue3';
 
 defineProps({
-    errors:Object,
+    errors: Object,
 })
 const form = useForm({
     name: "",
@@ -42,7 +38,7 @@ const form = useForm({
     price: null,
 });
 
-const handleOrders = ()=>{
+const handleOrders = () => {
 
 }
 </script>

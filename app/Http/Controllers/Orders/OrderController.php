@@ -70,6 +70,7 @@ class OrderController
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->back();
     }
 }

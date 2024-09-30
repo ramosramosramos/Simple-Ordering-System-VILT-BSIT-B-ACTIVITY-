@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('quantity');
+            $table->decimal('price',10,2);
+            $table->decimal('total',10,2)->storedAs('quantity * price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 <template>
     <nav class="h-[50px] bg-gray-900"></nav>
-    <section class="min-h-[100dvh] bg-gray-900 flex flex-col overflow-y-auto">
+    <section class="min-h-[100dvh] bg-gray-900 flex flex-col flex-wrap">
         <div class=" flex gap-6  h-[350px] w-[90%] m-auto">
             <form @submit.prevent="handleOrders" class="w-[100%] flex flex-col justify-center items-center">
                 <InputField v-model="form.name" label="Product name" placeholder="Example name. .."
@@ -18,7 +18,10 @@
         </div>
 
         <div class=" flex justify-center items-center w-[90%] m-auto">
-            <TableOrders />
+            <TableOrders :orders="orders" />
+        </div>
+        <div class="h-[50px]">
+
         </div>
 
     </section>

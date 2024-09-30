@@ -8,13 +8,13 @@
                 <th scope="col" class="text-sm font-medium text-gray-400 px-6 py-4 text-left">Total</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
 
-            <tr  v-for="order in orders " :key="order.id" class="bg-white border-b">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Jacob</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Thornton</td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">@fat</td>
+            <tr  v-for="order in orders.data " :key="order.id" class="bg-white border-b ">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ order.name }}</td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{order.quantity  }}</td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{order.price}}</td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{ order.total }}</td>
             </tr>
 
         </tbody>

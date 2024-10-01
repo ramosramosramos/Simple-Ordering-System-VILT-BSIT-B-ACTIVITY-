@@ -1,5 +1,7 @@
 <template>
+    <Head title="Orders"/>
     <nav class="h-[50px] bg-gray-900"></nav>
+
     <section class="min-h-[100vh] bg-gray-900 flex flex-col flex-wrap">
         <div class="flex gap-6 w-[90%] m-auto">
             <form @submit.prevent="handleOrders" class="w-[100%] flex flex-col justify-center items-center">
@@ -15,7 +17,7 @@
             </form>
 
             <div class="w-[100%] ">
-                <OrderResult :grand_total="grand_total" />
+                <OrderResult :grand_total="grand_total" :cash="cash" :balance="balance" />
             </div>
         </div>
 
@@ -37,6 +39,8 @@ defineProps({
     errors: Object,
     orders: Object,
     grand_total: Number,
+    cash: Number,
+    balance: Number,
 });
 
 const form = useForm({
@@ -47,13 +51,13 @@ const form = useForm({
 
 let total = ref(0);
 
-// Calculate total when quantity or price changes
+
 const countTotal = () => {
     total.value=0;
     total.value = (form.quantity || 0) * (form.price || 0);
 };
 
-// Handle form submission
+
 const handleOrders = () => {
     form.post(route('orders.store'), {
         onSuccess: () => {

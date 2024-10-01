@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Order::factory(10)->create();
+        Payment::factory(2)->create();
+        // Order::factory(10)->create();
         // User::factory(10)->create();
 
         // User::factory()->create([
@@ -23,3 +25,4 @@ class DatabaseSeeder extends Seeder
         // ]);
     }
 }
+    

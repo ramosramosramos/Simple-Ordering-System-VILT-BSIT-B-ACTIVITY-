@@ -2,18 +2,19 @@
     <teleport to="body">
       <div v-if="isOpen" class="fixed inset-0 flex items-center justify-center z-50">
         <div class="fixed inset-0 bg-black opacity-50" @click="close"></div>
-        <div class="bg-white p-5 rounded shadow-lg z-10">
+        <div class=" flex flex-col gap-3 bg-white p-5 rounded shadow-lg z-10">
           <h2 class="text-lg font-bold">{{ title }}</h2>
           <slot></slot>
-          <button @click="close" class="mt-4 bg-blue-500 text-white p-2 rounded">Close</button>
+          <button @click="close" class=" w-[90%] m-auto bg-blue-500 text-white p-2 rounded">Close</button>
         </div>
       </div>
     </teleport>
   </template>
 
   <script setup>
-  import { defineProps, emit } from 'vue';
+  import { defineProps, defineEmits } from 'vue';
 
+  // Define props
   const props = defineProps({
     title: {
       type: String,
@@ -25,15 +26,15 @@
     }
   });
 
-  const emitClose = () => {
-    emit('update:isOpen', false); // Emit an event to notify the parent to close
-  };
+  // Define emits
+  const emit = defineEmits();
 
+  // Method to close the modal
   const close = () => {
-    emitClose();
+    emit('update:isOpen', false);
   };
   </script>
 
   <style scoped>
-  /* Add any necessary styles here */
+  /* Optional: Add custom styles here */
   </style>

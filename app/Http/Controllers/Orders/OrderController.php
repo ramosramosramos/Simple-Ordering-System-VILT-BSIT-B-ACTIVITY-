@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\Orders\OrderResource;
+use App\Models\Payment;
 use App\Services\OrderCalculator;
 
 class OrderController
@@ -16,14 +17,23 @@ class OrderController
     public function index(OrderCalculator $service)
     {
         $orders = Order::query()
-        ->select(['id', 'name', 'quantity', 'price', 'total'])
-        ->latest()->get();
+            ->select(['id', 'name', 'quantity', 'price', 'total'])
+            ->latest()->get();
         $grand_total = $service->getGrandTotal($orders);
+        $cash = Payment::sum('cash');
+        $balance =0;
+        if ($cash > 0) {
+            $balance = $cash - $grand_total;
+
+        }
+
 
 
         return inertia('Orders/Home', [
             'orders' => OrderResource::collection($orders),
             'grand_total' => $grand_total,
+            'cash' => $cash,
+            'balance' => $balance,
         ]);
     }
 
@@ -73,7 +83,7 @@ class OrderController
     public function truncate()
     {
         Order::truncate();
-
+        Payment::truncate();
         return redirect()->back();
 
     }
